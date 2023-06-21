@@ -1,0 +1,62 @@
+/* PORTAL HOME IMG */
+.userIcon {
+    display: block;
+    object-fit: contain;
+    width: 85px;
+    filter: opacity(0.55);
+}
+
+/* LOGIN LINKS HOME SECTION */
+/* LINK ELEMENT */
+label {
+    color: #656d78;
+    font-size: 18px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    margin-top:10px;
+}
+
+.loginMediaSection {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.socialMediaLink { 
+    width: 85px;
+    height: 40px;
+    text-decoration: none;
+    background: #d1e1e8;
+    border-radius: 5.5px;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: solid #d1e1e8 1px;
+}
+
+.socialMediaImg {
+    padding: 8px;
+    display: block;
+    object-fit: contain;
+    width: 35px;
+    height: 35px;
+    filter: brightness(0%);
+}
+
+.socialMediaLink:hover, 
+.socialMediaLink:focus {
+    box-shadow: -5px 5px 12px 4px #d3d3d3;
+    background-color: azure;
+    border: solid #d3d3d3 1px;
+    transform: translateY(-2.5px);
+    outline: none;
+    transition: all 0.33s ease-in-out;
+}
+
+.socialMediaImg:hover {
+    filter: none;
+    transition: all 0.33s ease-in-out;
+}

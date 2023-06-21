@@ -1,0 +1,251 @@
+/* PORTAL ESCENE FOR THE hex PORTAL DESIGN*/
+.portalSection {
+    width: fit-content;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}   
+
+/* CAROUSEL */
+.carousel {
+    width: fit-content;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    position: absolute;
+    transform: translateZ(-288px);
+    transform-style: preserve-3d;
+    transition: transform 1s;
+    /*animation: spin infinite 20s linear !important;*/
+    /*transform: rotateY(-120deg);*/
+}
+
+@keyframes spin {
+    from {
+      transform: rotateY(0deg);
+    }
+    to {
+      transform: rotateY(-360deg);
+    }
+  }
+  
+
+/* FORM DIV */
+.formDiv {
+    width: fit-content;
+    height: auto;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: 1s transform, 2s opacity;
+}
+
+/* POSITION OF 6 PANELS SO IT CAN LOOK LIKE A HEXAGONAL PORTAL */
+.formDiv:nth-child(1) { transform: rotateY( 0deg) translateZ(433px); }
+.formDiv:nth-child(2) { transform: rotateY( 60deg) translateZ(433px); }
+.formDiv:nth-child(3) { transform: rotateY( 120deg) translateZ(433px); } 
+.formDiv:nth-child(4) { transform: rotateY( 180deg) translateZ(433px); }
+.formDiv:nth-child(5) { transform: rotateY( 240deg) translateZ(433px); }
+.formDiv:nth-child(6) { transform: rotateY( 300deg) translateZ(433px); } 
+
+/* HOME-REGISTER-LOGIN-EMAIL-CODE-RESULT FORM */
+form {
+    font-family: monospace !important;
+    width: 400px;
+    height: auto;
+    padding: 45px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    background: rgba(255, 255, 255, 0.55);
+    backdrop-filter: blur(2px) saturate(55%);
+    border: solid #d3d3d3 1px;
+    border-radius: 5.5px;
+    text-align: left;
+    align-items: center;
+    position: relative;
+}
+
+/* ACTIVE FORM */
+.activeForm {
+    box-shadow: -10.5px 12px 22px 5.5px #d3d3d3;
+    opacity: 1;
+    transition: 1s visibility, 0.5s opacity;
+    visibility: visible;
+}
+
+/* INACTIVE FORM */
+.inactiveForm {
+    box-shadow: none;
+    opacity: 0;
+    transition: 1s visibility, 1.5s opacity;
+    visibility: hidden;
+}
+
+/* INACTIVE FORM ELEMENTS */
+.inactiveForm .inputField .input, .inactiveForm img, .inactiveForm .button, .inctiveForm input,
+.inactiveForm .inputField .inputIcon, .inactiveForm a, .inactiveForm .socialMediaLink .socialMediaImg,
+.inactiveForm .header, .inactiveForm .subHeader, .inactiveForm .label, .activeForm .passwordOptionSectionDiv input {
+    transition: 1.5s opacity;
+    opacity: 0;
+}
+
+/* ACTIVE FORM ELEMENTS */
+.activeForm .inputField .input, .activeForm img, .activeForm .button, .activeForm input, 
+.activeForm .inputField .inputIcon, .activeForm a, .activeForm .socialMediaLink .socialMediaImg,
+.activeForm .header, .activeForm .subHeader, .activeForm .label, .activeForm .passwordOptionSectionDiv input,
+.activeForm .passwordOptionSectionDiv label {
+    transition: 1.5s opacity;
+    transition-delay: 0.8s;
+    animation: pop 1.5s ease-in-out ;
+}
+
+/* The animation code for 'pop effect' */
+@keyframes pop {
+
+    0% {
+       opacity: 0 ;
+    }
+    50% {
+        transform: scale(0.5); 
+    }
+    70% {
+        transform: scale(1.18) ;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* FORM FONTS border: solid red 1px;*/
+.header {
+    color: #50e3c2;
+    font-size: 32px;
+    margin: 0px;
+    padding: 0px;
+}
+
+.subHeader {
+    font-size: 18px;
+    color: #5f6671;
+    text-align: left;
+    margin: 0px 0px 0px 0px;
+    padding: 0px;
+}
+
+/* FORMS FIELD LABELS */
+.label {
+    font-family: monospace !important;
+    color: #5f6671;
+    font-size: 16px;
+}
+
+.labelB {
+    color: #50e3c2;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.labelB:hover{
+    text-decoration: underline;
+}
+
+/* FORMS FIELD MESSAGE LABELS */
+.labelMessage {
+    margin: 0px;
+    padding: 0px;
+    font-size: 14px;
+    display: none;
+}
+
+.labelMessageB{
+    color: #5f6671 !important;
+    text-decoration: none !important;
+    cursor: default !important;
+}
+
+
+/* FORM BUTTONS */
+.button {
+    font-family: monospace;
+    width: 100%;
+    height: 55px;
+    border-radius: 3.5px;
+    outline: none;
+    cursor: pointer;
+    background: #50e3c2;
+    border: none;
+    color: #f9f9f9;
+    font-size: 18px;
+    margin-top: 5px;
+}
+
+.button:hover, .button:focus {
+    transform: translateY(-2.5px);
+    background: #f9f9f9;
+    outline-offset: 0.3vh;
+    outline: solid #5f6671 2px;
+    color: #50e3c2;
+    box-shadow: -5px 5px 12px 4px #d3d3d3;
+    font-size: 22px;
+    transition: all 0.33s ease-in-out;
+}
+
+/* INPUTS FIELDS */
+.inputField {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    
+}
+
+.input {
+    font-family: monospace;
+    padding: 0px 65px 0px 12px;
+    border: solid #c3c3c3 1px;
+    width: 100%;
+    height: 40px;
+    border-radius: 3.5px;
+    font-size: 16px;
+    line-height: 55px;
+    letter-spacing: 1.2px;    
+}
+
+.inputIcon  {
+    position: absolute;
+    width: 25px !important;
+    height: 25px ;
+    filter: opacity(55%);
+    object-fit: contain;
+    right: 60px;
+}
+
+.inputField:hover .input {
+    border-color: #50e3c2 !important;
+    outline: none !important;
+}
+
+.input::placeholder {
+    font-size: 14px;
+    opacity: 52%; 
+}
+
+.inputField:hover .inputIcon {
+    filter: invert(96%) sepia(98%) saturate(810%) hue-rotate(83deg) brightness(103%) contrast(78%) !important;
+}
+
+/* RECAPTCHA SECTION */
+.recaptchaSection {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}

@@ -1,0 +1,35 @@
+.button {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    width: 400px;
+    height: 55px;
+    border-radius: 15.5px;
+    outline: none;
+    cursor: pointer;
+    background: #50e3c2;
+    border: none;
+    color: #f9f9f9;
+    font-size: 18px;
+    margin-top: 5px;
+    transition: all 0.3s ease-in-out;
+}
+
+.button:hover {
+    
+    color: #50e3c2;
+    box-shadow: -2.5px 6px 22px 2.5px #50e3c2;
+    transform: translateY(-5px);
+    border: solid #55fcd7 2px;
+    background-color: #686767;
+}
+
+.homeContainer {
+    margin: 0px auto 0px auto;
+    padding: 0px;
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+}
