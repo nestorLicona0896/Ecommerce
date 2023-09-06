@@ -1,22 +1,18 @@
 
-import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
-// pages|sections
+
+// pages|sections|componenets
 import Home from './pages/HomePage';
 import Portal from './pages/PortalPage';
-import Category from './pages/CategoryPage';
+
 // styles
 import './global.css';
 
 
+// main app to render on the react js npm server
 function App() {
 
-    const [showHomePage, setShowHomePage] = useState(true);
-
-    const handleButtonClick = () => {
-      setShowHomePage(false);
-    };
-
+   
     return (
         <Router>
             <div className="App">
@@ -26,24 +22,31 @@ function App() {
                     <nav>
                         <ul>
                             <li>
-                                <Link to="/">Home</Link>
+                                <Link to="/home" className='nav-link'>Inicio</Link>{/* clickleable link to request path to home page/component, like 'a' html element but avoiding the page reload*/}
                             </li>
                             <li>
-                                <Link to="/portal">Portal</Link>
+                                <Link to="/catalog" className='nav-link'>Catalogo</Link>{/* clickleable link to request path to catalog page/component, like 'a' html element but avoiding the page reload*/}
                             </li>
-
+                            <li>
+                                <Link to="/portal" className='nav-link'>Cuenta</Link>{/* clickleable link to request path to account portal page/component, like 'a' html element but avoiding the page reload*/}
+                            </li>
+                            <li> 
+                                <Link to="/contact" className='nav-link'>Contacto</Link>
+                            </li>
+                            <li> 
+                                <Link to="/about" className='nav-link'>Acerca de</Link>
+                            </li>
                         </ul>
                     </nav>
                 </header>
                 
                 {/* main content section */}
                 <main className='App-main'>
-
-                   
-                    <Routes>
-                        <Route path="/" element={<Home/>} />
-                        <Route path="/portal" element={<Portal/>} />
-                        <Route path="/category" element={<Category/>} />
+                    
+                    <Routes>{/* set of paths */} 
+                        <Route path="/home" element={<Home/>} />{/* request path to page/component home */}
+                        <Route path="/portal" element={<Portal/>} /> {/* request path to page/component portal */}
+                    
                     </Routes>
                     
                 </main>

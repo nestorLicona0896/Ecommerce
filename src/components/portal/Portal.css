@@ -1,0 +1,381 @@
+/* PORTAL ESCENE FOR THE PORTAL DESIGN*/
+.PortalSection {
+    width: fit-content;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}   
+
+/* CAROUSEL */
+.Carousel {
+    width: fit-content;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    position: absolute;
+    transform: translateZ(-288px);
+    transform-style: preserve-3d;
+    transition: transform 1s;
+    /*animation: spin infinite 20s linear !important;*/
+    /*transform: rotateY(-120deg);*/
+}
+
+/* rotation animation 360 */
+@keyframes spin {
+    from {
+      transform: rotateY(0deg);
+    }
+    to {
+      transform: rotateY(-360deg);
+    }
+}
+  
+
+/* FORM DIV */
+.FormDiv {
+    width: fit-content;
+    height: auto;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: 1s transform, 2s opacity;
+}
+
+/* POSITION OF PANELS SO IT CAN LOOK LIKE A regular 3d figure PORTAL ( using the formula of the apothema=500px/(2*Tan(180/6)) ) */
+.FormDiv:nth-child(1) { transform: rotateY( 0deg) translateZ(519px); }
+.FormDiv:nth-child(2) { transform: rotateY( 51deg) translateZ(519px); }
+.FormDiv:nth-child(3) { transform: rotateY( 102deg) translateZ(519px); } 
+.FormDiv:nth-child(4) { transform: rotateY( 153deg) translateZ(519px); }
+.FormDiv:nth-child(5) { transform: rotateY( 204deg) translateZ(519px); }
+.FormDiv:nth-child(6) { transform: rotateY( 255deg) translateZ(519px); } 
+.FormDiv:nth-child(7) { transform: rotateY( 306deg) translateZ(519px); } 
+
+/* HOME-REGISTER-LOGIN-EMAIL-CODE-RESULT FORM */
+form {
+    width: 500px;
+    height: auto;
+    padding: 45px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    background: rgba(255, 255, 255, 0.55);
+    backdrop-filter: blur(2px) saturate(55%);
+    border: solid #d3d3d3 1px;
+    border-radius: 5.5px;
+    text-align: left;
+    position: relative;
+}
+
+/* ACTIVE FORM */
+.ActiveForm {
+    box-shadow: -10.5px 12px 22px 5.5px #d3d3d3;
+    opacity: 1;
+    transition: 1s visibility, 0.5s opacity;
+    visibility: visible;
+}
+
+/* INACTIVE FORM */
+.InactiveForm {
+    box-shadow: none;
+    opacity: 0;
+    transition: 1s visibility, 1.5s opacity;
+    visibility: hidden;
+}
+
+/* The animation code for 'pop effect' */
+@keyframes pop {
+
+    0% {
+       opacity: 0 ;
+    }
+    50% {
+        transform: scale(0.5); 
+    }
+    70% {
+        transform: scale(1.18);
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* INACTIVE FORM ELEMENTS */
+.InactiveForm .InputField, .InactiveForm .FormButton, .InactiveForm img,
+.InctiveForm .InputField, .InactiveForm .InputIcon, .InactiveForm .SocialMediaLink,
+.InactiveForm .FormHeader, .InactiveForm .FormSubHeader, .InactiveForm .FormLabel, 
+.InactiveForm .PasswordOptionSection input, .InactiveForm li, .InactiveForm .FormLabelB {
+    transition: 1.5s opacity;
+    opacity: 0;
+}
+
+/* ACTIVE FORM ELEMENTS */
+.ActiveForm .InputField, .ActiveForm .FormButton, .ActiveForm img,
+.ActiveForm .InputField, .ActiveForm .InputIcon, .ActiveForm .SocialMediaLink, 
+.ActiveForm .FormHeader, .ActiveForm .FormSubHeader, .ActiveForm .FormLabel, 
+.ActiveForm .PasswordOptionSection input, .ActiveForm li, .ActiveForm .FormLabelB {
+    transition: 1.5s opacity;
+    transition-delay: 0.8s;
+    animation: pop 1.5s ease-in-out;
+}
+
+
+/* FORM FONTS border: solid red 1px;*/
+.FormHeader {
+    color: #50e3c2;
+    font-size: 32px;
+    margin: 0px;
+    padding: 0px;
+}
+
+.FormSubHeader {
+    font-size: 18px;
+    color: #5f6671;
+    text-align: left;
+    margin: 0px 0px 0px 0px;
+    padding: 0px;
+}
+
+/* FORMS FIELD LABELS */
+.FormLabel {
+    color: #5f6671;
+    font-size: 16px;
+    margin-top: 8.5px;
+}
+
+.FormLabelB {
+    color: #50e3c2;
+    font-size: 14px;
+}
+
+.FormLabelB:hover{
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+/* FORMS FIELD MESSAGE LABELS */
+.FormMessageLabel {
+    margin: 0px;
+    padding: 0px;
+    font-size: 14px;
+    display: none;
+}
+
+.FormMessageLabelB {
+    color: #5f6671 !important;
+    text-decoration: none !important;
+    cursor: default !important;
+}
+
+/* FORM BUTTONS */
+.FormButton {
+    width: 100%;
+    height: 55px;
+    border-radius: 3.5px;
+    outline: none;
+    cursor: pointer;
+    background: #50e3c2;
+    border: none;
+    color: #f9f9f9;
+    font-size: 20px;
+    margin-top: 5.5px;
+}
+
+.FormButton:hover, .FormButton:focus {
+    transform: translateY(-2.5px);
+    background: #f9f9f9;
+    outline-offset: 0.3vh;
+    outline: solid #5f6671 2px;
+    color: #50e3c2;
+    box-shadow: -5px 5px 12px 4px #d3d3d3;
+    font-size: 22px;
+    transition: all 0.33s ease-in-out;
+}
+
+/* INPUTS FIELDS */
+.InputFieldSection {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    
+}
+
+.InputField {
+    padding: 0px 65px 0px 12px;
+    border: solid #c3c3c3 1px;
+    width: 100%;
+    height: 40px;
+    border-radius: 3.5px;
+    font-size: 16px;
+    line-height: 55px;
+    letter-spacing: 1.2px;    
+}
+
+.InputIcon  {
+    position: absolute;
+    width: 25px !important;
+    height: 25px ;
+    filter: opacity(55%);
+    object-fit: contain;
+    right: 60px;
+}
+
+.InputFieldSection:hover .InputField {
+    border-color: #50e3c2 !important;
+    outline: none !important;
+}
+
+.InputField::placeholder {
+    font-size: 16px;
+    opacity: 45%; 
+}
+
+.InputFieldSection:hover .InputIcon {
+    filter: invert(96%) sepia(98%) saturate(810%) hue-rotate(83deg) brightness(103%) contrast(78%) !important;
+}
+
+/* RECAPTCHA SECTION */
+.RecaptchaSection {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+/* --------------------- STYLE FOR HOME SECTION --------------------- */
+
+/* PORTAL HOME IMG */
+.UserIcon {
+    display: block;
+    object-fit: contain;
+    width: 85px;
+    filter: opacity(0.55);
+}
+
+/* LOGIN LINKS HOME SECTION */
+
+.LoginMediaSection {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.SocialMediaLink { 
+    width: 85px;
+    height: 40px;
+    text-decoration: none;
+    background: #d1e1e8;
+    border-radius: 5.5px;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: solid #d1e1e8 1px;
+}
+
+.SocialMediaImg {
+    padding: 8px;
+    display: block;
+    object-fit: contain;
+    width: 35px;
+    height: 35px;
+    filter: brightness(0%);
+}
+
+.SocialMediaLink:hover, 
+.SocialMediaLink:focus {
+    box-shadow: -5px 5px 12px 4px #d3d3d3;
+    background-color: azure;
+    border: solid #d3d3d3 1px;
+    transform: translateY(-2.5px);
+    outline: none;
+    transition: all 0.33s ease-in-out;
+}
+
+.SocialMediaImg:hover {
+    filter: none;
+    transition: all 0.33s ease-in-out;
+}
+
+/* --------------------- STYLE FOR CODE SECTION --------------------- */
+
+#label-email-direction {
+    color: #50e3c2;
+    font-size: 22px;
+}
+
+.CodeContainer {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content:center;
+    align-items:center;
+    gap: 25px;
+}
+
+.CodeContainer .InputField {
+    margin: 0px;
+    padding: 0px;
+    height: 65px;
+    border-radius: 2.5px;
+    background: #f9f9f9;
+    font-size: 22px;
+    color: #696969;
+    border: solid #d3d3d3 1px;
+    text-align: center;
+}
+
+/* --------------------- STYLE FOR LOGIN SECTION --------------------- */
+.PasswordOptionSection {
+    display: flex;
+    flex-direction: row;
+    justify-content:space-between;
+    align-items: center;
+    width: 100%;
+    transition: all 0.3s;
+}
+
+.PasswordOption{
+    display: flex;
+    flex-direction: row;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    gap: 5.5px;
+}
+
+.RememberMeChkbox {
+    display: flex;
+    cursor: pointer;
+    top: 5px;
+}
+
+/* --------------------- STYLE FOR PASSWORD RESET SECTION --------------------- */
+
+.PasswordRequirementSection {
+    margin: 4.2px 0px 4.2px 0px;
+}
+
+.PasswordRequirementList {
+   margin: 5.5px;
+   display: flex;
+   flex-direction: column;
+   justify-content: left;
+   gap: 4.2px;
+}
+
+.PasswordRequirementList li{
+    font-size: 14px;
+    color: #5f6671;
+}
+

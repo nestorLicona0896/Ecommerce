@@ -1,58 +1,78 @@
+//custom hook for register form logic & behave
+import { useFormDataContext} from "./useRegisterFormContext";
 
-// styles
-import PortalCSS from "./PortalComponent.module.css";
 // images
 import user from "../../assets/user.png";
 import email from "../../assets/mail.png";
 import padlock from "../../assets/padlock.png";
 
-export const PortalRegisterComponent = () => {
-    const styles = {
-        registerForm: {
-            alignItems: "flex-start",
-        }
-      }
+// Register form:
+function PortalRegisterComponent () {
+
+    const { RegisterFormClass, formData, setFormData, handleSubmit, handleDisplayLoginSection, handleClear } = useFormDataContext();
+
+    // Handles the event whenever the input field change its value:
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData((prevData) => ({
+            ...prevData,
+            [name]: value,
+        }));
+    };    
       
     return (
-        // portal register user section
-        
-        <form className={PortalCSS.inactiveForm} style={styles.registerForm} action="" method="POST" id="register-form">
+       
+        // Register user section
+        <form className={RegisterFormClass} id="register-form" onSubmit={handleSubmit} >
             
-            <h1 className={PortalCSS.header}>Bienvenido!</h1>
-            <h3 className={PortalCSS.subHeader}>Completa los datos para continuar</h3>
+            {/* Form's header */}
+            <h1 className={"FormHeader"}>Bienvenido!</h1>
+            <h3 className={"FormSubHeader"}>Completa los datos para continuar</h3>
 
-            <label className={PortalCSS.label}>Nombre</label>
-            <div className={PortalCSS.inputField} id="name-field">
-                <img className={PortalCSS.inputIcon} src={user} alt="" id="user-icon" />
-                <input className={PortalCSS.input} type="text" placeholder="Nombre Apellido" maxlength="50" id="username" name="username" required
-                    onfocus="highlightField()" onfocusout="unhighlightField()" />
+            {/* Input field section */}
+            <label htmlFor="username" className={"FormLabel"}>Nombre</label>
+            <div className={"InputFieldSection"} id="name-field">
+                <img className={"InputIcon"} src={user} alt="" id="user-icon" />
+                <input className={"InputField"} type="text" placeholder="Nombre Apellido" maxLength="50" id="username" name="username" value={formData.username} onChange={handleChange} required />
             </div>
-            <label className={PortalCSS.labelMessage} id="label-name-message"><b className={PortalCSS.labelMessageB}>Mensaje sobre el campo nombre!</b></label>
+            <label className={"FormMessageLabel"} id="name-message-label"><b className={"FormMessageLabelB"}>Mensaje sobre el campo nombre!</b></label>
 
-            <label className={PortalCSS.label}>Correo</label>
-            <div className={PortalCSS.inputField} id="email-field">
-                <img className={PortalCSS.inputIcon} src={email} alt="" id="email-icon" />
-                <input className={PortalCSS.input} type="email" placeholder="ejemplo@hotmail.com" maxlength="50" id="email_address" name="email_address" required
-                    onfocus="highlightField()" onfocusout="unhighlightField()" />
+            <label htmlFor="email" className={"FormLabel"}>Correo</label>
+            <div className={"InputFieldSection"} id="email-field">
+                <img className={"InputIcon"} src={email} alt="" id="email-icon" />
+                <input className={"InputField"} type="email" placeholder="ejemplo@hotmail.com" maxLength="50" id="email" name="email" value={formData.email} onChange={handleChange} required />
             </div>
-            <label className={PortalCSS.labelMessage} id="label-email-message"><b className={PortalCSS.labelMessageB}>Mensaje sobre el campo correo!</b></label>
+            <label className={"FormMessageLabel"} id="email-message-label"><b className={"FormMessageLabelB"}>Mensaje sobre el campo correo!</b></label>
 
-            <label className={PortalCSS.label}>Contraseña</label>
-            <div className={PortalCSS.inputField} id="password-field">
-                <img className={PortalCSS.inputIcon} src={padlock} alt="" id="padlock-icon" />
-                <input className={PortalCSS.input} type="password" placeholder="********" maxlength="28" id="input_password" name="input_password" required
-                    onfocus="highlightField(this)" onfocusout="unhighlightField(this)" />
+            <label htmlFor="password" className={"FormLabel"}>Contraseña</label>
+            <div className={"InputFieldSection"} id="password-field">
+                <img className={"InputIcon"} src={padlock} alt="" id="padlock-icon" />
+                <input className={"InputField"} type="password" placeholder="********" maxLength="28" id="password" name="password" value={formData.password} onChange={handleChange} required />
+            </div> 
+            <label className={"FormMessageLabel"} id="password-message-label"><b className={"FormMessageLabelB"}>Mensaje sobre el campo contraseña!</b></label>
+
+            {/* Password Requirements section */}
+            <div className={"PasswordRequirementSection"}>
+                <label className={"FormLabel"}>La contraseña debe contener:</label>
+                <ul className ={"PasswordRequirementList"} id="password-requirements-list" >
+                    <li className={"PasswordRequirement"} id="password-requirement-1">al menos 8 carácteres</li>
+                    <li className={"PasswordRequirement"} id="password-requirement-2">al menos una letra mayúscula</li>
+                    <li className={"PasswordRequirement"} id="password-requirement-3">al menos un número</li>
+                    <li className={"PasswordRequirement"} id="password-requirement-4">al menos un carácter especial</li>
+                </ul>
             </div>
-            <label className={PortalCSS.labelMessage} id="label-password-message"><b className={PortalCSS.labelMessageB}>Mensaje sobre el campo contraseña!</b></label>
 
-            <div className={PortalCSS.recaptchaSection}>
-                <div class="g-recaptcha" data-sitekey="6LfAP-ojAAAAADEdWZPydAY6zA4cbl10LK1FcN9g">
-                </div>
+            {/* Recaptcha section */}
+            <div className={"RecaptchaSection"}>
+                
             </div>
 
-            <button className={PortalCSS.button} type="submit" id="button-create-account" onclick="register()">Crear cuenta</button>
+            {/* Submit */}
+            <button className={"FormButton"} type="submit" id="create-account-button"> Crear cuenta </button>
 
-            <label className={PortalCSS.label}> Ya tienes una cuenta? <b className={PortalCSS.labelB} onclick="displayLoginSection()"> Inicia sesión </b></label>
+            {/* Show login form/hide register/rotate portal */}      
+            <label className={"FormLabel"}> Ya tienes una cuenta? <b className={"FormLabelB"} onClick={handleDisplayLoginSection}> Inicia sesión </b></label>
+        
         </form>
     )
 };

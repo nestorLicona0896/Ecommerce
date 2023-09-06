@@ -1,39 +1,68 @@
-
+import { useClassContext } from './FormClassContext';
 // styles
-import PortalCSS from "./PortalComponent.module.css";
-import HomeCSS from "./PortalHome.module.css";
+
 // images
 import userImg from "../../assets/user.png";
 import facebookLogo from "../../assets/facebook.png";
 import gitLogo from "../../assets/github.png";
 import twitterLogo from "../../assets/twitter.png";
 import googleLogo from "../../assets/google.png";
+// portal functions
+import { rotatePortal } from "./PortalComponent";
 
-
+// Home form render function:
 export const PortalHomeComponent = () => {
+
+    const styles = {
+        homeForm: {
+            alignItems: "center"
+        }
+    }
+
+    //const [activeForm, setActiveForm] = useState(true);
+    const { HomeFormClass, setHomeFormClass, setRegisterFormClass, setLoginFormClass } = useClassContext();
+    
+    // Toggle the register form component's className:
+    const displayRegister = () => {
+        const selectedIndex = 1;
+        setHomeFormClass('InactiveForm');
+        setRegisterFormClass('ActiveForm');
+        rotatePortal(selectedIndex);
+    };
+
+    // Toggle the login form component's className:
+    const displayLogin = () => {
+        const selectedIndex = 2;
+        setHomeFormClass('InactiveForm');
+        setLoginFormClass('ActiveForm');
+        rotatePortal(selectedIndex);
+    };
+
+    
     return (
-        // portal home
-        <form className={PortalCSS.activeForm} action="" method="get" id="home-form">
+        // Home section
+        <form className={HomeFormClass} style={styles.homeForm} id="home-form">
 
-            <img className={HomeCSS.userIcon} src={userImg} alt="home-img" id="user-icon"/>
+            <img className={"UserIcon"} src={userImg} alt="home-img" id="user-icon"/>
+            {/* 👇️ button for display register/create account form*/}
+            <button className={"FormButton"} type="button" id="signup-button" onClick={displayRegister}>Registrarse</button>
+            {/* 👇️ button for display login/enter account form*/}
+            <button className={"FormButton"} type="button" id="login-button" onClick={displayLogin}>Iniciar sesion</button>
+            
+            <label className={"FormLabel"}>o ingresa usando</label>
+            {/* 👇️ other login-register methods*/}
+            <div className={"LoginMediaSection"} id="login-media-section">
+                <a className={"SocialMediaLink"} href="#.." id="google-link" onClick={displayLogin}>
+                    <img className={"SocialMediaImg"} src={googleLogo} alt="Google-logo" id="google-icon"/></a>
 
-            <button className={PortalCSS.button} type="button" id="signup-button" onclick="displayRegisterSection()">Registrarse</button>
-            <button className={PortalCSS.button} type="button" id="login-button" onclick="displayLoginSection()">Iniciar sesion</button>
-
-            <label className={PortalCSS.label}>o ingresa usando</label>
-
-            <div className={HomeCSS.loginMediaSection} id="loginMediaSection">
-                <a className={HomeCSS.socialMediaLink} href="#.." id="google-link" onclick="">
-                    <img className={HomeCSS.socialMediaImg} src={googleLogo} alt="Google-logo" id="google-icon"/></a>
-
-                <a className={HomeCSS.socialMediaLink} href="#.." id="facebook-link" onclick="">
-                    <img className={HomeCSS.socialMediaImg} src={facebookLogo} alt="Facebook-logo" id="facebook-icon"/>
+                <a className={"SocialMediaLink"} href="#.." id="facebook-link" onClick={displayLogin}>
+                    <img className={"SocialMediaImg"} src={facebookLogo} alt="Facebook-logo" id="facebook-icon"/>
                 </a>
-                <a className={HomeCSS.socialMediaLink} href="#.." id="twitter-link" onclick="">
-                    <img className={HomeCSS.socialMediaImg} src={twitterLogo} alt="Twitter-logo" id="twitter-icon"/>
+                <a className={"SocialMediaLink"} href="#.." id="twitter-link" onClick={displayLogin}>
+                    <img className={"SocialMediaImg"} src={twitterLogo} alt="Twitter-logo" id="twitter-icon"/>
                 </a>
-                <a className={HomeCSS.socialMediaLink} href="#.." id="github-link" onclick="">
-                    <img className={HomeCSS.socialMediaImg} src={gitLogo} alt="Github-logo" id="github-icon" />
+                <a className={"SocialMediaLink"} href="#.." id="github-link" onClick={displayLogin}>
+                    <img className={"SocialMediaImg"} src={gitLogo} alt="Github-logo" id="github-icon" />
                 </a>
             </div>
         </form>

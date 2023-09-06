@@ -1,48 +1,78 @@
-import React from "react";
-// portal subcomponents
+// The ClassProvider for the portal forms 
+import { ClassProvider } from './FormClassContext'; 
+import { RegisterFormDataProvider } from './useRegisterFormContext';
+
+// Portal subcomponents
 import PortalHomeComponent from "./PortalHomeComponent";
 import PortalRegisterComponent from "./PortalRegisterComponent";
 import PortalLoginComponent from "./PortalLoginComponent";
+import PortalPasswordResetComponent from "./PortalPasswordResetComponent";
 import PortalEmailComponent from "./PortalEmailComponent";
 import PortalCodeComponent from "./PortalCodeComponent";
 import PortalResultComponent from "./PortalResultComponent";
-// styles
-import PortalCSS from "./PortalComponent.module.css";
 
+// Style for the portal and it's components
+import "./Portal.css";
 
-// Hexagonal portal:
+// Fields for the specifications of the sides size
+const cellCount = 7; // number of sides for the portal
+const theta = Math.round(360 / cellCount); // the angle of rotation to slide a whole side of the hexagon
+let selectedIndex = 0; // the selected side 
+
+/* Rotates the portal allowing to see the active form */
+export const rotatePortal = (indexNumber) => {
+    const carousel = document.querySelector('.Carousel');
+    selectedIndex = indexNumber;
+    var angle = theta * selectedIndex * -1;
+    carousel.style.transform = 'rotateY(' + angle + 'deg)'; 
+}
+
+// Multiple side portal component (7 sides(forms) by now):
 export const PortalComponent = () => {
-
 
     return (
         
-        <div className={PortalCSS.portalSection}>
+        <div className={"PortalSection"}>
+            <div className={"Carousel"}>
+                <ClassProvider>
 
-            <div className={PortalCSS.carousel}>
-                {/* portal home section */}
-                <div className={PortalCSS.formDiv}>
-                    <PortalHomeComponent/>
-                </div>
-                {/* portal register section */}
-                <div className={PortalCSS.formDiv}>
-                    <PortalRegisterComponent/>
-                </div>
-                {/* portal login section */}
-                <div className={PortalCSS.formDiv}>
-                    <PortalLoginComponent/>
-                </div>
-                {/* portal email section */}
-                <div className={PortalCSS.formDiv}>
-                    <PortalEmailComponent/>
-                </div>
-                {/* portal code section */}
-                <div className={PortalCSS.formDiv}>
-                    <PortalCodeComponent/>
-                </div>
-                {/* portal result section */}
-                <div className={PortalCSS.formDiv}>
-                    <PortalResultComponent/>
-                </div>
+                    {/* Home section */}
+                    <div className={"FormDiv"}>
+                        <PortalHomeComponent />
+                    </div>
+
+                    {/* Register section */}
+                    <div className={"FormDiv"}>
+                        <RegisterFormDataProvider>
+                            <PortalRegisterComponent />
+                        </RegisterFormDataProvider>
+                    </div>
+
+                    {/* Login section */}
+                    <div className={"FormDiv"}>
+                        <PortalLoginComponent />
+                    </div>
+
+                    {/* Email section */}
+                    <div className={"FormDiv"}>
+                        <PortalEmailComponent/>
+                    </div>
+
+                    {/* Code section */}
+                    <div className={"FormDiv"}>
+                        <PortalCodeComponent />
+                    </div>
+
+                     {/* Password reset section */}
+                     <div className={"FormDiv"}>
+                        <PortalPasswordResetComponent/>
+                    </div>
+
+                    {/* Result section */}
+                    <div className={"FormDiv"}>
+                        <PortalResultComponent />
+                    </div>
+                </ClassProvider>
             </div>
         </div>
     )

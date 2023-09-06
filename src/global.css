@@ -1,3 +1,8 @@
+* {
+  box-sizing: border-box;
+  font-family: fantasy !important;
+}
+
 .App {
   text-align: center;
 }
@@ -6,56 +11,69 @@
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  background-color: darkcyan;
 }
 
 /* Header */
 .App-header {
-  background-color: #c7c7c8;
+  background-color: #ffffff;
   width: 100%;
-  height: 100px;
+  height: 55px;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content:space-between;
   font-size: calc(10px + 2vmin);
+  position: fixed;
+  top: 0px;
+  z-index: 99999;
 }
 
 .App-header nav {
   width: fit-content;
-  height: 100px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.App-header nav ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  width: fit-content;
-  height: 100px;
-  display: flex;
-  flex-direction: row;
-  align-items: start;
-  justify-content: space-between;
-  border: solid chartreuse 1px;
-}
-
-.App-header nav ul li {
-  background-color: #c7c7c8;
-  color: chartreuse;
-  width: 100px;
   height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  
-  border: solid #888585 1px;
+  margin: 0px, 200px, 0px, 0px;
 }
+
+.App-header nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: fit-content;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
+.App-header nav ul li {
+  width: fit-content;
+  height: 100%;
+ 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+}
+
+.App-header nav ul li .nav-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  padding: 0px 15px 0px 15px;
+  text-decoration: none;
+  color: #888585;
+  transition: 0.3s;
+}
+
+.App-header nav ul li .nav-link:hover {
+  background-color: #50e3c2;
+  color: #ffffff;
+}
+
 
 /* Main content */
 .App-main {
@@ -66,6 +84,7 @@ body {
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
+  margin: 100px 0px 0px 0px;
 }
 
 /* Footer */
@@ -78,6 +97,6 @@ body {
   justify-content: center;
   font-size: calc(10px + 2vmin);
   position: absolute;
-  bottom: -150px;
+  bottom: -220px;
 }
 
